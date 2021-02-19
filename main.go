@@ -1,24 +1,29 @@
 //+build windows
 
-package running_broker
-
+package main
 
 import (
 	"fmt"
-	"golang.org/x/sys/windows/registry"
-	"log"
+	"github.com/shirou/gopsutil/process"
 )
 
 func main() {
-	k, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`, registry.ALL_ACCESS)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer k.Close()
+	//k, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`, registry.ALL_ACCESS)
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//defer k.Close()
+	//
+	//s, _, err := k.GetStringValue("test")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//fmt.Printf("%q\n", s)
 
-	s, _, err := k.GetStringValue("test")
-	if err != nil {
-		log.Fatal(err)
+	//var rootProcess *process.Process
+	processes, _ := process.Processes()
+	for _, p := range processes {
+		fmt.Println(p.String())
 	}
-	fmt.Printf("%q\n", s)
+
 }
