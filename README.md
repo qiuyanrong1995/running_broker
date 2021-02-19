@@ -1,2 +1,7 @@
 # running_broker
-running_broker used to manage life cycle for programs
+程序运行代理软件，用于管理程序的生命周期
+
+- 程序的升级
+- 程序的运行
+- 程序的中断
+
